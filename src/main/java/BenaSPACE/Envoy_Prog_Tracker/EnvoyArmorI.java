@@ -4,6 +4,9 @@ package BenaSPACE.Envoy_Prog_Tracker;
 import java.util.*;
 import javax.annotation.processing.Generated;
 import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.JsonNode;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -15,36 +18,33 @@ import com.fasterxml.jackson.annotation.*;
     "unlocked"
 })
 @Generated("jsonschema2pojo")
+@Entity
 public class EnvoyArmorI {
+    @Id
+    private Integer playerID;
 
     @JsonProperty("id")
-    private Integer id;
+    private static final Integer id = 2646; //ID of Envoy Armor I achievement
     @JsonProperty("bits")
-    private List<Object> bits = new ArrayList<Object>();
+    private List<Object> bits = new ArrayList<Object>(); //The parts of the achievement completed
     @JsonProperty("current")
-    private Integer current;
+    private Integer current;//Number of "bits" completed
     @JsonProperty("max")
-    private Integer max;
+    private static final Integer max = 18;//Total "bits" to complete before achievement is done
     @JsonProperty("done")
-    private Boolean done;
+    private Boolean done;//True if achievement is fully completed
     @JsonProperty("unlocked")
-    private Boolean unlocked;
+    private Boolean unlocked;//Useless, as GW2's API just throws a 404 if not unlocked, but
+    //It is means to track if the achievement is available for completion or not
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();//No idea what happens here. :)
+
+    @JsonIgnore
+    JsonNode details;
 
     @JsonProperty("id")
-    public Integer getId() {
+    public static Integer getId() {
         return id;
-    }
-
-    @JsonProperty("id")
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public EnvoyArmorI withId(Integer id) {
-        this.id = id;
-        return this;
     }
 
     @JsonProperty("bits")
@@ -78,18 +78,8 @@ public class EnvoyArmorI {
     }
 
     @JsonProperty("max")
-    public Integer getMax() {
+    public static Integer getMax() {
         return max;
-    }
-
-    @JsonProperty("max")
-    public void setMax(Integer max) {
-        this.max = max;
-    }
-
-    public EnvoyArmorI withMax(Integer max) {
-        this.max = max;
-        return this;
     }
 
     @JsonProperty("done")
@@ -120,6 +110,14 @@ public class EnvoyArmorI {
     public EnvoyArmorI withUnlocked(Boolean unlocked) {
         this.unlocked = unlocked;
         return this;
+    }
+
+    public JsonNode getDetails() {
+        return details;
+    }
+
+    public void setDetails(JsonNode details) {
+        this.details = details;
     }
 
     @JsonAnyGetter

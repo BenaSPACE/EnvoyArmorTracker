@@ -12,6 +12,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.JsonNode;
+import jakarta.persistence.Entity;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -23,36 +25,29 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "unlocked"
 })
 @Generated("jsonschema2pojo")
+@Entity
 public class EnvoyArmorII {
 
     @JsonProperty("id")
-    private Integer id;
+    private static final Integer id = 3012;
     @JsonProperty("bits")
     private List<Integer> bits = new ArrayList<Integer>();
     @JsonProperty("current")
     private Integer current;
     @JsonProperty("max")
-    private Integer max;
+    private static final Integer max = 14;
     @JsonProperty("done")
     private Boolean done;
     @JsonProperty("unlocked")
     private Boolean unlocked;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    @JsonIgnore
+    JsonNode details;
 
     @JsonProperty("id")
-    public Integer getId() {
+    public static Integer getId() {
         return id;
-    }
-
-    @JsonProperty("id")
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public EnvoyArmorII withId(Integer id) {
-        this.id = id;
-        return this;
     }
 
     @JsonProperty("bits")
@@ -80,24 +75,23 @@ public class EnvoyArmorII {
         this.current = current;
     }
 
+    public JsonNode getDetails() {
+        return details;
+    }
+
+    public void setDetails(JsonNode details) {
+        this.details = details;
+    }
+
+
     public EnvoyArmorII withCurrent(Integer current) {
         this.current = current;
         return this;
     }
 
     @JsonProperty("max")
-    public Integer getMax() {
+    public static Integer getMax() {
         return max;
-    }
-
-    @JsonProperty("max")
-    public void setMax(Integer max) {
-        this.max = max;
-    }
-
-    public EnvoyArmorII withMax(Integer max) {
-        this.max = max;
-        return this;
     }
 
     @JsonProperty("done")

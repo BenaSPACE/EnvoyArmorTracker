@@ -1,6 +1,12 @@
 package BenaSPACE.Envoy_Prog_Tracker;
 
-public class User {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity public class User {
+    @Id
+    private int id;
+
     private String username;
     private String password;
 }
